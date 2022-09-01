@@ -31,3 +31,11 @@ class HumanPlayer(Player):
             # we're going to check that this is a correct value by tring to cast 
             # it to an integer, and if it's not, then we say its invalid
             # if that spot is not availble on the board, we also say its invalid
+            try:
+                val = int(square)
+                if val not in game.available_moves():
+                    raise ValueError
+                valid_square = True
+            except ValueError:
+                print('Invalid square. Try again.')
+        return val
